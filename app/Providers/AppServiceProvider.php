@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace SistemaVentasLinea\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
