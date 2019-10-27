@@ -31,15 +31,15 @@
         @include('tienda.articulo.modal')
         <tr>
             <td>{{$art->idarticulo}}</td>
-            <td>{{$art->departamento}}</td>
-            <td>{{$art->categoria}}</td>
-            <td>{{$art->subcategoria}}</td>
+            <td>{{$art->iddepto}}</td>
+            <td>{{$art->idcategoria}}</td>
+            <td>{{$art->idsubcategoria}}</td>
             <td>{{$art->nomarticulo}}</td>
             <td>{{$art->descriparticulo}}</td>
             <td>{{$art->precioarticulo}}</td>
             <td>{{$art->stockarticulo}}</td>
             <td>
-            <img src="{{asset('imagenes/articulos/'.$art->imagen)}}" alt="{{$art->nomarticulo}}" height="100px" width="100px" width="100px" class="img-thumbnail">
+            <img src="{{asset('imagenes/articulos/'.$art->imagenarticulo)}}" alt="{{$art->nomarticulo}}" height="100px" width="100px" width="100px" class="img-thumbnail">
             </td>
             <td>{{$art->detallearticulo}}</td>
             <td>{{$art->estado}}</td>
