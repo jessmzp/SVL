@@ -4,18 +4,20 @@ namespace SistemaVentasLinea;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Departamento extends Model
+class Subcategoria extends Model
 {
-    protected $table='departamento';
-    protected $primaryKey='iddepto';
+    protected $table='subcategoria';
+    protected $primaryKey='idsubcategoria';
 
    //Cuando ha sido creado y registrado el registro
     public $timestamps=false;
     //campos que van a recibir un valor para almacenar 
     protected $fillable=[
-        'nomdepto',
-        'descridepto',
+        'idcategoria',
+        'nomsubcategoria',
+        'descrisubcategoria',
         'estado',
 
     ];
 }
+

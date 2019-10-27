@@ -16,6 +16,7 @@ class DepartamentoController extends Controller
     public function __construct()
     {
         //lo utilizaremos para validar
+        $this->middleware('auth');
 
     }
     public function index(Request $request)
@@ -26,9 +27,9 @@ class DepartamentoController extends Controller
             //Si existe request obtengo todos los registros de la tabla categoria de la BD
             //me determina el texto de busqueda para filtrar todas las categorias
             $query=trim($request->get('searchText'));
-            $departamentos=DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')
-            ->where('condicion','=','1')
-            ->orderBy('idcategoria','desc')
+            $departamentos=DB::table('departamento')->where('nomdepto','LIKE','%'.$query.'%')
+            ->where('estado','=','1')
+            ->orderBy('iddepto','desc')
             ->paginate(7);
             return view('tienda.departamento.index',["departamentos"=>$departamentos,"searchText"=>$query]);
         }
@@ -45,9 +46,9 @@ class DepartamentoController extends Controller
     {
     
         $departamento=new Departamento;
-        $departamento->nombre=$request->get('nombre');
-        $departamento->descripcion=$request->get('descripcion');
-        $departamento->condicion='1';
+        $departamento->nomdepto=$request->get('nombre');
+        $departamento->descridepto=$request->get('descripcion');
+        $departamento->estado='1';
         $departamento->save();
         return Redirect::to('tienda/departamento');
     }
@@ -66,8 +67,8 @@ class DepartamentoController extends Controller
     {
         
         $departamento=Departamento::findOrFail($id);
-        $departamento->nombre=$request->get('nombre');
-        $departamento->descripcion=$request->get('descripcion');
+        $departamento->nomdepto=$request->get('nombre');
+        $departamento->descridepto=$request->get('descripcion');
         $departamento->update();
         return Redirect::to('tienda/departamento');
     }
@@ -75,7 +76,7 @@ class DepartamentoController extends Controller
     public function destroy($id)
     {
         $departamento=Departamento::findOrFail($id);
-        $departamento->condicion='0';
+        $departamento->estado='0';
         $departamento->update();
         return Redirect::to('tienda/departamento');
     }

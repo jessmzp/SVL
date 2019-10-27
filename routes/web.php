@@ -11,14 +11,12 @@
 |
 */
 
-/*Route::get('/', function () { 
-    return view('welcome');
-});
-
+Route::get('/', function () { 
+    return view('auth/login');});
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
 Auth::routes();
-
+/*
 Route::get('/home', 'HomeController@index')->name('home'); */
-
 /*Route::get('/', function(){  
     return 'Home';
 });  
@@ -28,3 +26,15 @@ Route::get('/usuarios', function(){
 }); */ 
 
 Route::resource('tienda/departamento','DepartamentoController');
+Route::resource('tienda/categoria','CategoriaController');
+Route::resource('tienda/subcategoria','SubcategoriaController');
+Route::resource('tienda/articulo','ArticuloController');
+
+
+function index()
+{
+    $departamento = Departamento::all();
+    $articulo   = Articulo::all();
+
+    return view('/tienda', compact('departamento', 'articulo'));
+}
