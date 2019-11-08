@@ -27,8 +27,14 @@
             <td>{{$dep->descridepto}}</td>
             <td>
 
-                <a href="{{URL::action('DepartamentoController@edit',$dep->iddepto)}}"><button class="btn btn-info">Editar</button></a>
-                <a href="#" data-target="#modal-delete-{{$dep->iddepto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+            <a href="{{URL::action('DepartamentoController@edit',$dep->iddepto)}}">
+                <span class="btn btn-info">
+                <i class="fas fa-edit"></i></span>
+                
+               <!--<button class="btn btn-info">Editar</button></a>-->
+                <a href="#" data-target="#modal-delete-{{$dep->iddepto}}" data-toggle="modal">
+                <span class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i></span> 
             </td>
         </tr>
         @endforeach

@@ -44,17 +44,17 @@
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="index3.html" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Contactar</a>
       </li>
     </ul>
 
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
         <div class="input-group-append">
           <button class="btn btn-navbar" type="submit">
             <i class="fas fa-search"></i>
@@ -74,7 +74,7 @@
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="hidden-xs">Jessica Zavaleta</span>
+          <span class="hidden-xs"> Jessica Zavaleta </span>
         </a>
         <ul class="dropdown-menu">
         
@@ -100,9 +100,8 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">Prueba</span>
+      <!--<img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"style="opacity: .8">
+      <span class="brand-text font-weight-light">Prueba</span>-->
     </a>
 
     <!-- Sidebar -->
@@ -110,10 +109,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+         <!-- <img src="dist/img/cirrus.png" alt="User Image">-->
         </div>
         <div class="info">
-          <a href="#" class="d-block">Jessica Zavaleta</a>
+          <a href="#" class="d-block">Compras en Línea</a>
         </div>
       </div>
 
@@ -124,7 +123,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
             <a href="/tienda/departamento" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fas fa-bars"></i>
               <p>
                 Departamentos
                 <i class="right fas fa-angle-left"></i>
@@ -133,13 +132,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="/tienda/categoria" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-circle"></i>
                   <p>Categoria</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="/tienda/subcategoria" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                <i class="fas fa-circle"></i>
                   <p>Subcategoria</p>
                 </a>
               </li>
@@ -159,12 +158,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <!--<h1 class="m-0 text-dark">Dashboard</h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v1</li>
+              <!--<li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>-->
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -194,7 +193,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Ventas en linea</strong>
+    <strong>Compras en línea</strong>
     TOO115
     <div class="float-right d-none d-sm-inline-block">
       <b>2019</b> 
