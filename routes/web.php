@@ -31,10 +31,9 @@ Route::resource('tienda/subcategoria','SubcategoriaController');
 Route::resource('tienda/articulo','ArticuloController');
 
 
-function index()
-{
+/*function index(){
     $departamento = Departamento::all();
     $articulo   = Articulo::all();
 
     return view('/tienda', compact('departamento', 'articulo'));
-}
+} */

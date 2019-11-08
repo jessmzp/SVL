@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h3>Editar Articulo: {{$articulo->nombre}}</h3>
+        <h3>Editar Articulo:{{$articulo->nomarticulo}}</h3>
             @if(count($errors)>0)
             <div class="alert alert-danger">
             <ul>
@@ -12,15 +12,15 @@
             </ul>
             </div>
             @endif
-			</div>
-			</div>
-            {!! Form::model($articulo,['method'=>'PATCH','route'=>['tienda.articulo.update',$articulo->idarticulo],'files'=>'true'])!!}
+	</div>
+</div>
+            {!! Form::model($articulo,['method'=>'PATCH','route'=>['articulo.update',$articulo->idarticulo],'files'=>'true'])!!}
             {{Form::token()}}
-            div class="row">
+            <div class="row">
             <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" required value="{{$articulo->nombre}}" class="form-control">
+                <input type="text" name="nombre" value="{{$articulo->nombre}}" class="form-control">
 
             </div>
 			</div>
@@ -33,7 +33,7 @@
 				@if($dep->iddepto==$articulo->iddepto)
 				<option value="{{$dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
 				@else
-				<option value="{{dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
+				<option value="{{$dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
 				@endif
 				@endforeach
 				</select>
@@ -45,7 +45,11 @@
                 <label>Categoria</label>
 				<select name="idcategoria" class="form-control">
 				@foreach($categorias as $cat)
-				<option value="{{$cat->idcategoria}}">{{$cat->nomcategoria}}</option>
+                @if($cat->idcategoria==$articulo->idcategoria)
+				<option value="{{$cat->idcategoria}}"selected>{{$cat->nomcategoria}}</option>
+				@else
+				<option value="{{$cat->idcategoria}}"selected>{{$cat->nomcategoria}}</option>
+				@endif
 				@endforeach
 				</select>
                
@@ -56,7 +60,11 @@
                 <label>Subcategoria</label>
 				<select name="idsubcategoria" class="form-control">
 				@foreach($subcategorias as $scat)
-				<option value="{{$scat->idsubcategoria}}">{{$scat->nomsubcategoria}}</option>
+                @if($scat->idsubcategoria==$articulo->idsubcategoria)
+				<option value="{{$scat->idcategoria}}"selected>{{$scat->nomsubcategoria}}</option>
+				@else
+				<option value="{{$scat->idcategoria}}"selected>{{$scat->nomsubcategoria}}</option>
+				@endif
 				@endforeach
 				</select>
                
@@ -65,38 +73,38 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-               <input type="text" name="descripcion" required value="{{$articulo->descripcion}}" class="form-control">
+               <input type="text" name="descripcion" value="{{$articulo->descripcion}}" class="form-control">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="precio">Precio</label>
-               <input type="text" name="precio" required value="{{$articulo->precio}}" class="form-control">
+               <input type="text" name="precio" value="{{$articulo->precio}}" class="form-control">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="stock">Stock</label>
-               <input type="number" min="1" max="999" name="stock" required value="{{$articulo->stock}}" class="form-control">
+               <input type="number" min="1" max="999" name="stock" value="{{$articulo->stock}}" class="form-control">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="detalle">Detalle</label>
-               <input type="text" name="detalle" required value="{{$articulo->detalle}}" class="form-control">
+               <input type="text" name="detalle" value="{{$articulo->detalle}}" class="form-control">
             </div>
             </div>
 			<div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="nombre">Estado</label>
-               <input type="text" name="estado"required value="{{$articulo->estado}}" class="form-control">
+               <input type="text" name="estado" value="{{$articulo->estado}}" class="form-control">
             </div>
             </div>
 			<div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="imagen">Imagen</label>
                <input type="file" name="imagen"  class="form-control">
-			   @if ($$articulo->imagen)!=""
+			   @if (($articulo->imagenarticulo)!="")
 			   <img src="{{asset('imagenes/articulos/'.$articulo->imagen)}}">
 			   @endif
             </div>
@@ -109,7 +117,7 @@
 			
 
         {!!Form::close()!!}   
- </div> 
-</div>
 @endsection
+
+
 

@@ -75,7 +75,7 @@ class CategoriaController extends Controller
     {
         
         $categoria=categoria::findOrFail($id);
-        $articulo->iddepto=$request->get('iddepto');
+        $categoria->iddepto=$request->get('iddepto');
         $categoria->nomcategoria=$request->get('nombre');
         $categoria->descricategoria=$request->get('descripcion');
         $categoria->update();

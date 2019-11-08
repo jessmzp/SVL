@@ -68,13 +68,14 @@ class SubcategoriaController extends Controller
     {
         $subcategoria=Subcategoria::findOrFail($id);
         $categorias=DB::table('categoria as cat')->where('cat.estado','=','1')->get();
-        return view("tienda.subcategoria.edit",["subcategoria"=>$subcategoria,"categoria"=>$categorias]);
+        return view("tienda.subcategoria.edit",["subcategoria"=>$subcategoria,"categorias"=>$categorias]);
     }
 
     public function update(SubcategoriaFormRequest $request,$id)
     {
         
         $subcategoria=subcategoria::findOrFail($id);
+        $subcategoria->idcategoria=$request->get('idcategoria');
         $subcategoria->nomsubcategoria=$request->get('nombre');
         $subcategoria->descrisubcategoria=$request->get('descripcion');
         $subcategoria->update();

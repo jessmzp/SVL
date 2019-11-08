@@ -14,6 +14,21 @@
             @endif
             {!! Form::model($subcategoria,['method'=>'PATCH','route'=>['subcategoria.update',$subcategoria->idsubcategoria]])!!}
             {{Form::token()}}
+
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label>Categoria</label>
+				<select name="idcategoria" class="form-control">
+				@foreach($categorias as $cat)
+				@if($cat->idcategoria==$subcategoria->idcategoria)
+				<option value="{{$cat->idcategoria}}"selected>{{$cat->nomcategoria}}</option>
+				@else
+				<option value="{{$cat->idcategoria}}"selected>{{$cat->nomcategoria}}</option>
+				@endif
+				@endforeach
+				</select> 
+            </div>
+            </div>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" class="form-control" value="{{$subcategoria->nombre}}" placeholder="Nombre">

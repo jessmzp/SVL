@@ -2,7 +2,7 @@
 @section('contenido')
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h3>Editar categoria: {{$categoria->nombre}}</h3>
+        <h3>Editar categoria: {{$categoria->nomcategoria}}</h3>
             @if(count($errors)>0)
             <div class="alert alert-danger">
             <ul>
@@ -14,6 +14,21 @@
             @endif
             {!! Form::model($categoria,['method'=>'PATCH','route'=>['categoria.update',$categoria->idcategoria]])!!}
             {{Form::token()}}
+
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+            <div class="form-group">
+                <label>Departamento</label>
+				<select name="iddepto" class="form-control">
+				@foreach($departamentos as $dep)
+				@if($dep->iddepto==$categoria->iddepto)
+				<option value="{{$dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
+				@else
+				<option value="{{$dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
+				@endif
+				@endforeach
+				</select> 
+            </div>
+            </div>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre">
