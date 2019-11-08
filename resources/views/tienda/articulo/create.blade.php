@@ -62,25 +62,25 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-               <input type="text" name="descriparticulo"  class="form-control" placeholder="Descripcion del articulo">
+               <input type="text" name="descripcion"  class="form-control" placeholder="Descripcion del articulo">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="precio">Precio</label>
-               <input type="text" name="precioarticulo"  class="form-control" placeholder="Precio del articulo">
+               <input type="text" name="precio"  class="form-control" placeholder="Precio del articulo">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="stock">Stock</label>
-               <input type="number" min="1" max="999" name="stockarticulo"  class="form-control" placeholder="Stock del articulo">
+               <input type="number" min="1" max="999" name="stock"  class="form-control" placeholder="Stock del articulo">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="detalle">Detalle</label>
-               <input type="text" name="detallearticulo"  class="form-control" placeholder="Detalle del articulo">
+               <input type="text" name="detalle"  class="form-control" placeholder="Detalle del articulo">
             </div>
             </div>
 			<div class="col-lg-6 col-sm-6 col-xs-12">
@@ -92,7 +92,7 @@
 			<div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="imagen">Imagen</label>
-               <input type="file" name="imagenarticulo"  class="form-control">
+               <input type="file" name="imagen"  class="form-control">
             </div>
             </div>	
             <div class="form-group">
