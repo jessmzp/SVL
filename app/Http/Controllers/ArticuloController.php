@@ -3,13 +3,12 @@
 namespace SistemaVentasLinea\Http\Controllers;
 
 use Illuminate\Http\Request;
-use SistemaVentasLinea\Http\Requests;
-
+use SistemaVentasLinea\Http\Requests\ArticuloFormRequest;
+use sistemaVentasLinea\Articulo;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use sistemaVentasLinea\Http\Requests\ArticuloFormRequest;
-use sistemaVentasLinea\Articulo;
 use DB;
+
 
 
 class ArticuloController extends Controller
@@ -37,7 +36,7 @@ class ArticuloController extends Controller
                 'cat.nomcategoria as categoria','dep.nomdepto as departamento','dep.iddepto','cat.idcategoria',
                 'scat.idsubcategoria')
             ->where('art.nomarticulo','LIKE','%'.$query.'%')
-            ->where('art.estado','=','disponible')
+            ->where('art.estado','=','Disponible')
             ->where('dep.estado','=','1')
             ->where('cat.estado','=','1')
             ->where('scat.estado','=','1')
@@ -70,7 +69,7 @@ class ArticuloController extends Controller
         $articulo->stockarticulo=$request->get('stock');
         $articulo->imagenarticulo=$request->get('imagen');
         $articulo->detallearticulo=$request->get('detalle');
-        $articulo->estado='Activo';
+        $articulo->estado='Disponible';
         if (Input::hasFile('imagen')){
             $file=Input::file('imagen');
             $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());

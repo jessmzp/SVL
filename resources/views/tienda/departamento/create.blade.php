@@ -19,7 +19,7 @@
                 <input type="text" name="nombre" class="form-control" placeholder="Nombre">
             </div>
             <div class="form-group">
-                <label for="nombre">Descripción</label>
+                <label for="descripcion">Descripción</label>
                 <input type="text" name="descripcion" class="form-control" placeholder="Descripción">
             </div>
             <div class="form-group">

@@ -27,13 +27,14 @@ class ArticuloFormRequest extends FormRequest
             'iddepto'=>'required',
             'idcategoria'=>'required',
             'idsubcategoria'=>'required',
-            'nomarticulo'=>'required|max:100',
-            'descriparticulo'=>'required|max:500',
-            'precioarticulo'=>'required|float',
-            'stockarticulo'=>'required|numeric',
-            'imagenarticulo'=>'mimes:jpeg,bmp,png',
-            'detallearticulo'=>'required|max:50',
-            'estado'=>'required|numeric',
+            'nombre'=>'required|max:100',
+            'descripcion'=>'required|max:500',
+            'precio'=>'required|between:0,9999.9999',
+            'stock'=>'required|numeric',
+            'imagen'=>'required|mimes:jpg,jpeg,png,bmp',
+            'detalle'=>'required|max:200',
+            'estado'=>'required|max:20',
         ];
     }
 }
+
