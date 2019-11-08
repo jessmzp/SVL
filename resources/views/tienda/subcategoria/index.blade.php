@@ -25,12 +25,12 @@
         <tr>
             <td>{{$scat->idsubcategoria}}</td>
             <td>{{$scat->categoria}}</td>
-            <td>{{$scat->nomcategoria}}</td>
-            <td>{{$scat->descricategoria}}</td>
+            <td>{{$scat->nomsubcategoria}}</td>
+            <td>{{$scat->descrisubcategoria}}</td>
             <td>
 
-                <a href="{{URL::action('subcategoriaController@edit',$dep->iddepto)}}"><button class="btn btn-info">Editar</button></a>
-                <a href="#" data-target="#modal-delete-{{$dep->iddepto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                <a href="{{URL::action('SubcategoriaController@edit',$scat->idsubcategoria)}}"><button class="btn btn-info">Editar</button></a>
+                <a href="#" data-target="#modal-delete-{{$scat->idsubcategoria}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
             </td>
         </tr>
         @endforeach

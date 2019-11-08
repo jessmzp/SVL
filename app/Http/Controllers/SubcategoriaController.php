@@ -4,8 +4,7 @@ namespace SistemaVentasLinea\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-
-//Hago referencia al modelo subcategoria
+//Hago referencia al modelo Subcategoria
 //use SistemaVentasLinea\Http\Request;
 use SistemaVentasLinea\Subcategoria;
 //para hacer redireccion
@@ -26,15 +25,15 @@ class SubcategoriaController extends Controller
         //validamos:
         if($request)
         {
-            //Si existe request obtengo todos los registros de la tabla subsubcategoria de la BD
-            //me determina el texto de busqueda para filtrar todas las subsubcategorias
+            //Si existe request obtengo todos los registros de la tabla Subcategoria de la BD
+            //me determina el texto de busqueda para filtrar todas las Subcategorias
             $query=trim($request->get('searchText'));
             $subcategorias=DB::table('subcategoria as scat')
             ->join ('categoria as cat','scat.idcategoria','=','cat.idcategoria')
-            ->select('cat.idcategoria','cat.nomcategoria','cat.descricategoria','cat.estado','dep.nomdepto as departamento')
+            ->select('scat.idsubcategoria','scat.nomsubcategoria','scat.descrisubcategoria','scat.estado','cat.nomcategoria as categoria')
             ->where('scat.nomsubcategoria','LIKE','%'.$query.'%')
             ->where('scat.estado','=','1')
-            ->orderBy('scat.idsubsubcategoria','desc')
+            ->orderBy('scat.idsubcategoria','desc')
             ->paginate(7);
             return view('tienda.subcategoria.index',["subcategorias"=>$subcategorias,"searchText"=>$query]);
         }
@@ -42,15 +41,17 @@ class SubcategoriaController extends Controller
 
     public function create()
     {
-        return view("tienda.subcategoria.create");
+        $categorias=DB::table('categoria as cat')->where('cat.estado','=','1')->get();
+        return view("tienda.subcategoria.create",["categorias"=>$categorias]);
     }
-//almacena el objeto del modelo subsubcategoria en nuestra tabla subsubcategoria de la BD
-//validamos utilizando el request subsubcategoriaFormRequest
-    public function store(subcategoriaFormRequest $request)
+//almacena el objeto del modelo Subcategoria en nuestra tabla Subcategoria de la BD
+//validamos utilizando el request SubcategoriaFormRequest
+    public function store(SubcategoriaFormRequest $request)
 
     {
     
-        $subcategoria=new subsubcategoria;
+        $subcategoria=new Subcategoria;
+        $subcategoria->idcategoria=$request->get('idcategoria');
         $subcategoria->nomsubcategoria=$request->get('nombre');
         $subcategoria->descrisubcategoria=$request->get('descripcion');
         $subcategoria->estado='1';
@@ -65,13 +66,15 @@ class SubcategoriaController extends Controller
 
     public function edit($id)
     {
-        return view("tienda.subcategoria.edit",["subcategoria"=>subcategoria::findOrFail($id)]);
+        $subcategoria=Subcategoria::findOrFail($id);
+        $categorias=DB::table('categoria as cat')->where('cat.estado','=','1')->get();
+        return view("tienda.subcategoria.edit",["subcategoria"=>$subcategoria,"categoria"=>$categorias]);
     }
 
-    public function update(subcategoriaFormRequest $request,$id)
+    public function update(SubcategoriaFormRequest $request,$id)
     {
         
-        $subcategoria=subsubcategoria::findOrFail($id);
+        $subcategoria=subcategoria::findOrFail($id);
         $subcategoria->nomsubcategoria=$request->get('nombre');
         $subcategoria->descrisubcategoria=$request->get('descripcion');
         $subcategoria->update();

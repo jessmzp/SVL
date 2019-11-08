@@ -41,7 +41,8 @@ class CategoriaController extends Controller
 
     public function create()
     {
-        return view("tienda.categoria.create");
+        $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
+        return view("tienda.categoria.create",["departamentos"=>$departamentos]);
     }
 //almacena el objeto del modelo categoria en nuestra tabla categoria de la BD
 //validamos utilizando el request categoriaFormRequest
@@ -50,6 +51,7 @@ class CategoriaController extends Controller
     {
     
         $categoria=new categoria;
+        $categoria->iddepto=$request->get('iddepto');
         $categoria->nomcategoria=$request->get('nombre');
         $categoria->descricategoria=$request->get('descripcion');
         $categoria->estado='1';
@@ -64,13 +66,16 @@ class CategoriaController extends Controller
 
     public function edit($id)
     {
-        return view("tienda.categoria.edit",["categoria"=>categoria::findOrFail($id)]);
+        $categoria=Categoria::findOrFail($id);
+        $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
+        return view("tienda.categoria.edit",["categoria"=>$categoria,"departamentos"=>$departamentos]);
     }
 
     public function update(categoriaFormRequest $request,$id)
     {
         
         $categoria=categoria::findOrFail($id);
+        $articulo->iddepto=$request->get('iddepto');
         $categoria->nomcategoria=$request->get('nombre');
         $categoria->descricategoria=$request->get('descripcion');
         $categoria->update();

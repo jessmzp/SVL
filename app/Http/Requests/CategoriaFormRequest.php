@@ -25,8 +25,8 @@ class CategoriaFormRequest extends FormRequest
     {
         return [
             'iddepto'=>'required',
-            'nomcategoria'=>'required|max:100',
-            'descricategoria'=>'required|max:500',
+            'nombre'=>'required|max:100',
+            'descripcion'=>'required|max:500',
 
         ];
     }

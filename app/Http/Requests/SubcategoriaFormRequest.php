@@ -25,8 +25,8 @@ class SubcategoriaFormRequest extends FormRequest
     {
         return [
             'idcategoria'=>'required',
-            'nomsubcategoria'=>'required|max:100',
-            'descrisubcategoria'=>'required|max:500',
+            'nombre'=>'required|max:100',
+            'descripcion'=>'required|max:500',
         ];
     }
 }

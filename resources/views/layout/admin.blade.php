@@ -123,7 +123,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="/tienda/departamento" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Departamentos
@@ -132,13 +132,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="/tienda/categoria" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categoria</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="/tienda/subcategoria" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Subcategoria</p>
                 </a>

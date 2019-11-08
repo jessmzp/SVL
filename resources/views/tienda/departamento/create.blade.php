@@ -14,6 +14,7 @@
             @endif
             {!! Form::open(array('url'=>'tienda/departamento','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
+            
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" class="form-control" placeholder="Nombre">
