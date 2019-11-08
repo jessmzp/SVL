@@ -90,9 +90,9 @@ class ArticuloController extends Controller
         //Editar a un articulo en especifico
         $articulo=Articulo::findOrFail($id);
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
-        $categorias=DB::table('categoria as cat')->where('cart.estado','=','1')->get();
+        $categorias=DB::table('categoria as cat')->where('cat.estado','=','1')->get();
         $subcategorias=DB::table('subcategoria as scat')->where('scat.estado','=','1')->get();
-        return view("tienda.articulo.edit",["articulo"=>$articulo,"departamento"=>$departamento,"categoria"=>$categoria,"subcategoria"=>$subcategoria]);
+        return view("tienda.articulo.edit",["articulo"=>$articulo,"departamentos"=>$departamentos,"categorias"=>$categorias,"subcategorias"=>$subcategorias]);
     }
 
     public function update(ArticuloFormRequest $request,$id)
