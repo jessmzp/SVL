@@ -4,7 +4,7 @@ namespace SistemaVentasLinea\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SistemaVentasLinea\Http\Requests\ArticuloFormRequest;
-use sistemaVentasLinea\Articulo;
+use SistemaVentasLinea\Articulo;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use DB;
@@ -73,7 +73,7 @@ class ArticuloController extends Controller
         if (Input::hasFile('imagen')){
             $file=Input::file('imagen');
             $file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
-            $articulo->imagen=$file->getClientOriginalName();
+            $articulo->imagenarticulo=$file->getClientOriginalName();
         }
         $articulo->save();
         return Redirect::to('tienda/articulo');
