@@ -45,8 +45,14 @@
             <td>{{$art->estado}}</td>
             <td>
 
-                <a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}"><button class="btn btn-info">Editar</button></a>
-                <a href="#" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+            <a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}">
+                <span class="btn btn-info">
+                <i class="fas fa-edit"></i></span>
+                
+               <!--<button class="btn btn-info">Editar</button></a>-->
+                <a href="#" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal">
+                <span class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i></span> 
             </td>
         </tr>
         @endforeach
