@@ -21,6 +21,7 @@ class DepartamentoController extends Controller
     }
     public function index(Request $request)
     {
+        //$request->user()->authorizeRoles('admin');
         //validamos:
         if($request)
         {
