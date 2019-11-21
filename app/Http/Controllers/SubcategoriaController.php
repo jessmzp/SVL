@@ -22,6 +22,8 @@ class SubcategoriaController extends Controller
     }
     public function index(Request $request)
     {
+        //permiso
+        $request->user()->authorizeRoles('admin');
         //validamos:
         if($request)
         {
