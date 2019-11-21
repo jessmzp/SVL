@@ -16,15 +16,17 @@
             {{Form::token()}}
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" class="form-control" value="{{$departamento->nombre}}" placeholder="Nombre">
+                <input type="text" name="nombre" class="form-control" value="{{$departamento->nomdepto}}">
             </div>
             <div class="form-group">
                 <label for="nombre">Descripción</label>
-                <input type="text" name="descripcion" class="form-control" value="{{$departamento->descripcion}}" placeholder="Descripción">
+                <input type="text" name="descripcion" class="form-control" value="{{$departamento->descridepto}}">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a href="/tienda/departamento">
+                    <button class="btn btn-danger" type="button">Cancelar</button>
+                </a>
             </div>
 
         {!!Form::close()!!}   

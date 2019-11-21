@@ -31,15 +31,17 @@
             </div>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre">
+                <input type="text" name="nombre" class="form-control" value="{{$categoria->nomcategoria}}">
             </div>
             <div class="form-group">
                 <label for="nombre">Descripción</label>
-                <input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción">
+                <input type="text" name="descripcion" class="form-control" value="{{$categoria->descricategoria}}">
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a href="/tienda/categoria">
+                    <button class="btn btn-danger" type="button">Cancelar</button>
+                </a>
             </div>
 
         {!!Form::close()!!}   

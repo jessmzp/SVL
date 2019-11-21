@@ -1,5 +1,7 @@
 @extends('layout.admin')
 @section('contenido')
+
+<script src="{{ asset('js/crearArticulo.js') }}"></script>
 <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <h3>Nuevo articulo</h3>
@@ -29,10 +31,11 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label>Departamento</label>
-				<select name="iddepto" class="form-control">
-				@foreach($departamentos as $dep)
-				<option value="{{$dep->iddepto}}">{{$dep->nomdepto}}</option>
-				@endforeach
+				<select name="iddepto" class="form-control" id="campo1" name="campo1" onchange="habilitar2(this.value);">
+                    <option value="0" selected>Elija una opcion</option>
+				    @foreach($departamentos as $dep)
+				        <option value="{{$dep->iddepto}}">{{$dep->nomdepto}}</option>
+				    @endforeach
 				</select>
                
             </div>
@@ -40,7 +43,8 @@
 			<div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label>Categoria</label>
-				<select name="idcategoria" class="form-control">
+				<select name="idcategoria" class="form-control" id="campo2" name="campo2" disabled="true" onchange="habilitar3(this.value);">
+                <option value="0" selected>Elija una opcion</option>
 				@foreach($categorias as $cat)
 				<option value="{{$cat->idcategoria}}">{{$cat->nomcategoria}}</option>
 				@endforeach
@@ -51,12 +55,13 @@
 			<div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label>Subcategoria</label>
-				<select name="idsubcategoria" class="form-control">
+				<select name="idsubcategoria" class="form-control" id="campo3" name="campo3" disabled="true">
+                <option value="0" selected>Elija una opcion</option>
 				@foreach($subcategorias as $scat)
 				<option value="{{$scat->idsubcategoria}}">{{$scat->nomsubcategoria}}</option>
 				@endforeach
 				</select>
-               
+    
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
@@ -97,9 +102,12 @@
             </div>	
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a href="/tienda/articulo">
+                    <button class="btn btn-danger" type="button">Cancelar</button>
+                </a>
             </div>
 			</div>
+
         {!!Form::close()!!}   
 @endsection
 
