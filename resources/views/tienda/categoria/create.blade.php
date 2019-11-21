@@ -42,8 +42,9 @@
            
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
-          
+                <a href="/tienda/categoria">
+                    <button class="btn btn-danger" type="button">Cancelar</button>    
+                </a>
             </div>
 			</div>
 			</div>

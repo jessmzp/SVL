@@ -20,7 +20,7 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" value="{{$articulo->nombre}}" class="form-control">
+                <input type="text" name="nombre" value="{{$articulo->nomarticulo}}" class="form-control">
 
             </div>
 			</div>
@@ -31,9 +31,9 @@
 				<select name="iddepto" class="form-control">
 				@foreach($departamentos as $dep)
 				@if($dep->iddepto==$articulo->iddepto)
-				<option value="{{$dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
+				<option value="{{$dep->iddepto}}" selected>{{$dep->nomdepto}}</option>
 				@else
-				<option value="{{$dep->iddepto}}"selected>{{$dep->nomdepto}}</option>
+				<option value="{{$dep->iddepto}}" selected>{{$dep->nomdepto}}</option>
 				@endif
 				@endforeach
 				</select>
@@ -46,9 +46,9 @@
 				<select name="idcategoria" class="form-control">
 				@foreach($categorias as $cat)
                 @if($cat->idcategoria==$articulo->idcategoria)
-				<option value="{{$cat->idcategoria}}"selected>{{$cat->nomcategoria}}</option>
+				<option value="{{$cat->idcategoria}}" selected>{{$cat->nomcategoria}}</option>
 				@else
-				<option value="{{$cat->idcategoria}}"selected>{{$cat->nomcategoria}}</option>
+				<option value="{{$cat->idcategoria}}" selected>{{$cat->nomcategoria}}</option>
 				@endif
 				@endforeach
 				</select>
@@ -73,25 +73,25 @@
             <div class="col-lg-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label for="descripcion">Descripción</label>
-               <input type="text" name="descripcion" value="{{$articulo->descripcion}}" class="form-control">
+               <input type="text" name="descripcion" value="{{$articulo->descriparticulo}}" class="form-control">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="precio">Precio</label>
-               <input type="text" name="precio" value="{{$articulo->precio}}" class="form-control">
+               <input type="text" name="precio" value="{{$articulo->precioarticulo}}" class="form-control">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="stock">Stock</label>
-               <input type="number" min="1" max="999" name="stock" value="{{$articulo->stock}}" class="form-control">
+               <input type="number" min="1" max="999" name="stock" value="{{$articulo->stockarticulo}}" class="form-control">
             </div>
             </div>
             <div class="col-lg-6 col-sm-6 col-xs-12">
              <div class="form-group">
                 <label for="detalle">Detalle</label>
-               <input type="text" name="detalle" value="{{$articulo->detalle}}" class="form-control">
+               <input type="text" name="detalle" value="{{$articulo->detallearticulo}}" class="form-control">
             </div>
             </div>
 			<div class="col-lg-6 col-sm-6 col-xs-12">
@@ -111,7 +111,9 @@
             </div>	
             <div class="form-group">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button class="btn btn-danger" type="reset">Cancelar</button>
+                <a href="/tienda/articulo">
+                    <button class="btn btn-danger" type="button">Cancelar</button>
+                </a>
             </div>
 			</div>
 			
