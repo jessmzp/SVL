@@ -77,7 +77,7 @@
       <!-- User Account: style can be found in dropdown.less -->
       <li class="dropdown user user-menu">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="hidden-xs"> {{auth()->user()->name}} </span>
+          <span class="hidden-xs"> {{ auth()->user()->name }} </span>
         </a>
         <ul class="dropdown-menu">
         
@@ -127,10 +127,7 @@
           <li class="nav-item has-treeview menu-open">
             <a href="/tienda/departamento" class="nav-link active">
             <i class="fas fa-bars"></i>
-              <p>
-                Departamentos
-                <i class="right fas fa-angle-left"></i>
-              </p>
+              <p>Departamentos<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
