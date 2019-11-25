@@ -29,7 +29,7 @@ Route::resource('tienda/departamento','DepartamentoController');
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/subcategoria','SubcategoriaController');
 Route::resource('tienda/articulo','ArticuloController');
-
+Route::resource('usuario/articuloU','ArticuloUController');
 
 /*function index(){
     $departamento = Departamento::all();

@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{{ asset("css/general.css") }}">
+    <link rel="stylesheet" href="{{ asset('css/general.css') }}">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -27,46 +27,21 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Menu</p>
+                <p>  </p>
                 <li>
-                    <a href="#">Inicio</a>
-                </li>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Departamentos</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                    </ul>
+                    <a href="/home">Inicio</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
+                    <a href="/tienda/departamento">Departamentos</a>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="/tienda/categoria">Categoria</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                    <a href="/tienda/subcategoria">Subcategoria</a>
                 </li>
                 <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                    <a href="/tienda/articulo">Articulos</a>
                 </li>
             </ul>
         </nav>

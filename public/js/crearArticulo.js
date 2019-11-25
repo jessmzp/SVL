@@ -24,7 +24,6 @@ function habilitar2(value){
 	}
 		else{
 			document.getElementById("campo1").getElementById("campo2").length=1;
-
 			document.getElementById("campo1").getElementById("campo2").options[0].value="-"
 			document.getElementById("campo1").getElementById("campo2").options[0].text="-"
 		}
@@ -33,7 +32,7 @@ function habilitar2(value){
 }
 
 function habilitar3(value){
-	if (value !== "0") {
+	if (value != "0") {
 		document.getElementById("campo3").disabled=false;
 	}else{
 		document.getElementById("campo3").disabled=true;

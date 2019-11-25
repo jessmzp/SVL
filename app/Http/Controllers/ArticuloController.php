@@ -127,4 +127,17 @@ class ArticuloController extends Controller
         $articulo->update();
         return Redirect::to('tienda/articulo');
     }
+    /*
+    public function getCategoria(Request $request){
+        
+        if($request->ajax()){
+            $categorias = Categoria :: where('iddepto', $request->departamento_id)->get();
+            foreach($categoria as $cat){ 
+                $categoriasArray[$cat->idcategoria] = $cat->nomcategoria;
+            }
+
+            return response()-> json($categoriasArray);
+        }
+    }
+    */
 }
