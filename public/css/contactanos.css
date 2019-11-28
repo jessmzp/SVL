@@ -2,7 +2,7 @@
     color: #36A0FF;
     font-size: 27px;
     padding: 10px;
-    margin-left: -20%;
+    margin-left: -15%;
     position: absolute;
 
 }
@@ -16,7 +16,7 @@
 
 #formulario{
     position: relative;
-    margin-top: 5%;
+    margin-top: 8%;
 }
 
 input{
@@ -33,4 +33,8 @@ textarea{
     margin-top: -3.5%;
     margin-left: 10%;
     position: relative;
+}
+
+button{
+    margin-left: 36%;
 }

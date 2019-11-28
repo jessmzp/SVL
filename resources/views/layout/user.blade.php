@@ -31,28 +31,20 @@
                 <li>
                     <a href="/usuario/articuloU">Inicio</a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/usuario/departamento">Departamentos</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
+                    <a href="/usuario/categoria">Categorias</a>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="/usuario/subcategoria">Subcategoria</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/usuario/articuloU">Articulo</a>
+                </li>
+                <li>
+                    <a href="/usuario/contactanos">Contactanos</a>
                 </li>
             </ul>
 

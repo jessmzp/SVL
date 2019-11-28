@@ -1,10 +1,10 @@
-@extends('layout.user')
+@extends('layout.general')
 
 @section('contenido')
 
 <link rel="stylesheet" href="{{ asset('css/contactanos.css') }}">
 
-<div class="container">
+<div class="container" id='contac'>
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
