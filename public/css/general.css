@@ -102,47 +102,6 @@ a, a:hover, a:focus {
 }
 
 
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-}
-
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #5F5E5F;
-}
-
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
-    font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-
-a.article, a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
-}
-
-
 
 /* ---------------------------------------------------
     CONTENT STYLE
@@ -221,4 +180,56 @@ a.article, a.article:hover {
         transform: rotate(-45deg) translate(1px, -1px);
     }
 
+}
+
+/**********************************/
+/*    User style                  */
+
+
+#user a[data-toggle="collapse"] {
+    position: relative;
+}
+
+#user .dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+}
+
+#user ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #FFF;
+}
+
+#user ul.CTAs {
+    padding: 20px;
+}
+
+#user ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#user a.download {
+    background: #000;
+    color: #7386D5;
+}
+
+#user a.article, a.article:hover {
+    background: #6d7fcc !important;
+    color: #000 !important;
+}
+
+#usuario{
+    margin-left: -150%;
+}
+
+#user{
+    color: #000;
 }

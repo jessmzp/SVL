@@ -30,7 +30,7 @@ Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/subcategoria','SubcategoriaController');
 Route::resource('tienda/articulo','ArticuloController');
 Route::resource('usuario/articuloU','ArticuloUController');
-
+Route::get('usuario/contactanos','ContactanosController@index');
 /*function index(){
     $departamento = Departamento::all();
     $articulo   = Articulo::all();
