@@ -26,6 +26,7 @@ Route::get('/usuarios', function(){
 }); */ 
 
 Route::resource('tienda/departamento','DepartamentoController');
+Route::resource('tienda/departamento/categoria','DepartamentoCategoria');
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/subcategoria','SubcategoriaController');
 Route::resource('tienda/articulo','ArticuloController');
