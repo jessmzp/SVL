@@ -35,7 +35,7 @@
                     </table><hr>
                     <h3>
                         <span class="label label-success">
-                        Total:${{number_format($total,2)}}
+                        Total: $ <label id="totalPagarFinal"></label>
                         </span>
                     </h3><hr>
                     <p>
