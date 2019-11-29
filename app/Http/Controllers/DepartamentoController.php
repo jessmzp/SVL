@@ -22,18 +22,22 @@ class DepartamentoController extends Controller
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('admin');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
+        $query=trim($request->get('searchText'));
+        $departamentos=DB::table('departamento')->where('nomdepto','LIKE','%'.$query.'%')
+        ->where('estado','=','1')
+        ->orderBy('iddepto','desc')
+        ->paginate(7);
+        if($isAdmin)
         {
             //Si existe request obtengo todos los registros de la tabla categoria de la BD
             //me determina el texto de busqueda para filtrar todas las categorias
-            $query=trim($request->get('searchText'));
-            $departamentos=DB::table('departamento')->where('nomdepto','LIKE','%'.$query.'%')
-            ->where('estado','=','1')
-            ->orderBy('iddepto','desc')
-            ->paginate(7);
             return view('tienda.departamento.index',["departamentos"=>$departamentos,"searchText"=>$query]);
+        }
+        else
+        {
+            return view('usuario.departamento',["departamentos"=>$departamentos,"searchText"=>$query]);
         }
     }
 

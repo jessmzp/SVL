@@ -24,21 +24,25 @@ class CategoriaController extends Controller
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('admin');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
+        $query=trim($request->get('searchText'));
+        $categorias=DB::table('categoria as cat')
+        ->join ('departamento as dep','cat.iddepto','=','dep.iddepto')
+        ->select('cat.idcategoria','cat.nomcategoria','cat.descricategoria','cat.estado','dep.nomdepto as departamento')
+        ->where('cat.nomcategoria','LIKE','%'.$query.'%')
+        ->where('cat.estado','=','1')
+        ->orderBy('cat.idcategoria','desc')
+        ->paginate(7);
+        if($isAdmin)
         {
             //Si existe request obtengo todos los registros de la tabla categoria de la BD
             //me determina el texto de busqueda para filtrar todas las categorias
-            $query=trim($request->get('searchText'));
-            $categorias=DB::table('categoria as cat')
-            ->join ('departamento as dep','cat.iddepto','=','dep.iddepto')
-            ->select('cat.idcategoria','cat.nomcategoria','cat.descricategoria','cat.estado','dep.nomdepto as departamento')
-            ->where('cat.nomcategoria','LIKE','%'.$query.'%')
-            ->where('cat.estado','=','1')
-            ->orderBy('cat.idcategoria','desc')
-            ->paginate(7);
             return view('tienda.categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
+        }
+        else
+        {
+            return view('usuario.categoria',["categorias"=>$categorias,"searchText"=>$query]); 
         }
     }
 
