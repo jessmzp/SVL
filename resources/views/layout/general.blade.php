@@ -42,7 +42,7 @@
                     <a href="/tienda/subcategoria">Subcategoria</a>
                 </li>
                 <li>
-                    <a href="/usuario/articuloU">Articulos</a>
+                    <a href="/tienda/articulo">Articulos</a>
                 </li>
             </ul>
         </nav>
