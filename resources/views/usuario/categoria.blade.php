@@ -27,7 +27,8 @@
             <td>{{$cat->idcategoria}}</td>
             <td>{{$cat->nomcategoria}}</td>
             <td>{{$cat->descricategoria}}</td>
-            <td><a href="" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
+            
+            <td><a href="{{URL::action('CategoriaSubCategoria@show',$cat->idcategoria)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
         </tr>
         @endforeach
     </table>

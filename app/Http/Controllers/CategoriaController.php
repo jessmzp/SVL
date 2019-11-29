@@ -46,8 +46,9 @@ class CategoriaController extends Controller
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
         return view("tienda.categoria.create",["departamentos"=>$departamentos]);
     }
@@ -71,8 +72,9 @@ class CategoriaController extends Controller
         return view("tienda.categoria.show",["categoria"=>categoria::findOrFail($id)]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $categoria=Categoria::findOrFail($id);
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
         return view("tienda.categoria.edit",["categoria"=>$categoria,"departamentos"=>$departamentos]);
@@ -89,8 +91,9 @@ class CategoriaController extends Controller
         return Redirect::to('tienda/categoria');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $categoria=categoria::findOrFail($id);
         $categoria->estado='0';
         $categoria->update();

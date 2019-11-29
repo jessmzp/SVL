@@ -52,8 +52,9 @@ class ArticuloController extends Controller
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
         $categorias=DB::table('categoria as cat')->where('cat.estado','=','1')->get();
         $subcategorias=DB::table('subcategoria as scat')->where('scat.estado','=','1')->get();
@@ -91,8 +92,9 @@ class ArticuloController extends Controller
         return view("tienda.articulo.show",["articulo"=>Articulo::findOrFail($id)]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         //Editar a un articulo en especifico
         $articulo=Articulo::findOrFail($id);
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
@@ -124,8 +126,9 @@ class ArticuloController extends Controller
         return Redirect::to('tienda/articulo');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $articulo=Articulo::findOrFail($id);
         $articulo->estado='Agotado';
         $articulo->update();

@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
     <h3>Listado de Subcategorias</h3>
-    @include('tienda.subcategoria.search')
+    {{-- @include('tienda.subcategoria.search') --}}
     </div>
 </div>
 <div class="row">
@@ -25,12 +25,12 @@
             <td>{{$scat->idsubcategoria}}</td>
             <td>{{$scat->nomsubcategoria}}</td>
             <td>{{$scat->descrisubcategoria}}</td>
-            <td><a href="" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
+            <td><a href="{{URL::action('SubCategoriaArticulo@show',$scat->idsubcategoria)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
         </tr>
         @endforeach
     </table>
 </div>
-{{$subcategorias->render()}}
+{{-- {{$subcategorias->render()}} --}}
 </div>
 
 </div>

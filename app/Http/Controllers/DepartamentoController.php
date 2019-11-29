@@ -41,8 +41,9 @@ class DepartamentoController extends Controller
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         return view("tienda.departamento.create");
     }
 //almacena el objeto del modelo categoria en nuestra tabla categoria de la BD
@@ -64,8 +65,9 @@ class DepartamentoController extends Controller
         return view("tienda.departamento.show",["departamento"=>Departamento::findOrFail($id)]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         return view("tienda.departamento.edit",["departamento"=>Departamento::findOrFail($id)]);
     }
 
@@ -79,8 +81,9 @@ class DepartamentoController extends Controller
         return Redirect::to('tienda/departamento');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $departamento=Departamento::findOrFail($id);
         $departamento->estado='0';
         $departamento->update();

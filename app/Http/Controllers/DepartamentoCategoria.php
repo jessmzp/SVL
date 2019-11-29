@@ -43,8 +43,9 @@ class DepartamentoCategoria extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,Request $request)
     {
+        $request->user()->authorizeRoles('user');
         return view("usuario.categoria",["categorias"=>Categoria::where('iddepto',$id)->get()]);
     }
 
