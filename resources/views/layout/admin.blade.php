@@ -27,6 +27,9 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="{{asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700')}}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -70,31 +73,31 @@
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <!-- Navbar Right Menu -->
-  <div class="navbar-custom-menu">
-    <ul class="nav navbar-nav">
-      <!-- Messages: style can be found in dropdown.less-->
-      
-      <!-- User Account: style can be found in dropdown.less -->
-      <li class="dropdown user user-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <span class="hidden-xs"> {{ auth()->user()->name }} </span>
-        </a>
-        <ul class="dropdown-menu">
-        
-          
-          <!-- Menu Footer-->
-          <li class="user-footer">
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="hidden-xs"> {{ auth()->user()->name }} </span>
+                </a>
+                <ul class="dropdown-menu">
+                
+                  
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    
+                    <div class="pull-right">
+                      <a href="{{url('logout')}}" class="btn btn-default btn-flat">Cerrar sesión</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              
+            </ul>
+          </div>
             
-            <div class="pull-right">
-              <a href="{{url('logout')}}" class="btn btn-default btn-flat">Cerrar sesión</a>
-            </div>
-          </li>
-        </ul>
-      </li>
-      
-    </ul>
-  </div>
-     
     </ul>
   </nav>
   <!-- /.navbar -->

@@ -4,7 +4,7 @@
 //Utilizando la rejilla de Boostraps.?>
 <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-    <h3>Listado de Departamentos <a href="departamento/create"><button class= "btn btn-success">Nuevo</button></a> </h3>
+    <h3>Listado de Departamentos </h3>
     @include('tienda.departamento.search')
     </div>
 </div>
@@ -16,7 +16,7 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Descripción</th>
-        <th>Opciones</th>
+        <th>Ver</th>
         </thead>
 
         @foreach($departamentos as $dep)
@@ -25,17 +25,7 @@
             <td>{{$dep->iddepto}}</td>
             <td>{{$dep->nomdepto}}</td>
             <td>{{$dep->descridepto}}</td>
-            <td>
-
-            <a href="{{URL::action('DepartamentoController@edit',$dep->iddepto)}}">
-                <span class="btn btn-info">
-                <i class="fas fa-edit"></i></span>
-                
-               <!--<button class="btn btn-info">Editar</button></a>-->
-                <a href="#" data-target="#modal-delete-{{$dep->iddepto}}" data-toggle="modal">
-                <span class="btn btn-danger">
-                <i class="fas fa-trash-alt"></i></span> 
-            </td>
+            <td><a href="{{URL::action('DepartamentoCategoria@show',$dep->iddepto)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
         </tr>
         @endforeach
     </table>

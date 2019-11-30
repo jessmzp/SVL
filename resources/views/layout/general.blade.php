@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>AdminLTE 3 | TOOProyect</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -46,41 +47,64 @@
                 </li>
             </ul>
         </nav>
+<!-- Page Content  -->
+<div id="content">
 
-        <!-- Page Content  -->
-        <div id="content">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light" id='user'>
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="/home" class="nav-link">Inicio</a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+        <a href="/usuario/contactanos" class="nav-link">Contactar</a>
+    </li>
+    </ul>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+    <!-- SEARCH FORM -->
+    <form class="form-inline ml-3">
+    <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
+        <div class="input-group-append">
+        <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+        </button>
+        </div>
+    </div>
+    </form>
 
-                    <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+    <!-- Messages Dropdown Menu -->
+    <!-- Navbar Right Menu -->
+<div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+    <!-- Messages: style can be found in dropdown.less-->
+    
+    <!-- User Account: style can be found in dropdown.less -->
+    <li class="dropdown user user-menu" id='usuario'>
+        <a href="#" id='user' class="dropdown-toggle" data-toggle="dropdown">
+        <span class="hidden-xs"> {{ auth()->user()->name }} </span>
+        </a>
+        <ul class="dropdown-menu">
+        
+        
+        <!-- Menu Footer-->
+        <li class="user-footer">
+            
+            <div class="pull-right">
+            <a href="{{url('logout')}}" class="btn btn-default btn-flat">Cerrar sesión</a>
+            </div>
+        </li>
+        </ul>
+    </li>
+    
+    </ul>
+</div>
+    
+    </ul>
+</nav>
+<!-- /.navbar -->
             @yield ('contenido')
             <section class="content">
                 <div class="container-fluid">

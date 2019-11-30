@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.general')
 @section('contenido')
 <?php//Diseño de nuesra vista para mostrar el listado de los categorias
 //Utilizando la rejilla de Boostraps.?>

@@ -22,23 +22,28 @@ class DepartamentoController extends Controller
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('admin');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
+        $query=trim($request->get('searchText'));
+        $departamentos=DB::table('departamento')->where('nomdepto','LIKE','%'.$query.'%')
+        ->where('estado','=','1')
+        ->orderBy('iddepto','desc')
+        ->paginate(7);
+        if($isAdmin)
         {
             //Si existe request obtengo todos los registros de la tabla categoria de la BD
             //me determina el texto de busqueda para filtrar todas las categorias
-            $query=trim($request->get('searchText'));
-            $departamentos=DB::table('departamento')->where('nomdepto','LIKE','%'.$query.'%')
-            ->where('estado','=','1')
-            ->orderBy('iddepto','desc')
-            ->paginate(7);
             return view('tienda.departamento.index',["departamentos"=>$departamentos,"searchText"=>$query]);
+        }
+        else
+        {
+            return view('usuario.departamento',["departamentos"=>$departamentos,"searchText"=>$query]);
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         return view("tienda.departamento.create");
     }
 //almacena el objeto del modelo categoria en nuestra tabla categoria de la BD
@@ -60,8 +65,9 @@ class DepartamentoController extends Controller
         return view("tienda.departamento.show",["departamento"=>Departamento::findOrFail($id)]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         return view("tienda.departamento.edit",["departamento"=>Departamento::findOrFail($id)]);
     }
 
@@ -75,8 +81,9 @@ class DepartamentoController extends Controller
         return Redirect::to('tienda/departamento');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $departamento=Departamento::findOrFail($id);
         $departamento->estado='0';
         $departamento->update();

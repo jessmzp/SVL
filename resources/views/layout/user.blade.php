@@ -27,83 +27,87 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Menu</p>
+                <p></p>
                 <li>
-                    <a href="#">Inicio</a>
-                </li>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Departamentos</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                    </ul>
+                    <a href="/usuario/articuloU">Inicio</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
+                    <a href="/usuario/departamento">Departamentos</a>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="/usuario/categoria">Categorias</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="/usuario/subcategoria">Subcategoria</a>
+                </li>
+                <li>
+                    <a href="/usuario/articuloU">Articulo</a>
+                </li>
+                <li>
+                    <a href="/usuario/contactanos">Contactanos</a>
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul>
         </nav>
 
         <!-- Page Content  -->
         <div id="content">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light" id='user'>
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="/usuario/articuloU" class="nav-link">Inicio</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="/usuario/contactanos" class="nav-link">Contactar</a>
+            </li>
+            </ul>
 
-                    <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div>
+            <!-- SEARCH FORM -->
+            <form class="form-inline ml-3">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
+                <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
                 </div>
-            </nav>
+            </div>
+            </form>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
+            
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu" id='usuario'>
+                <a href="#" id='user' class="dropdown-toggle" data-toggle="dropdown">
+                <span class="hidden-xs"> {{ auth()->user()->name }} </span>
+                </a>
+                <ul class="dropdown-menu">
+                
+                
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    
+                    <div class="pull-right">
+                    <a href="{{url('logout')}}" class="btn btn-default btn-flat">Cerrar sesión</a>
+                    </div>
+                </li>
+                </ul>
+            </li>
+            
+            </ul>
+        </div>
+            
+            </ul>
+        </nav>
+        <!-- /.navbar -->
 
             @yield ('contenido')
             <section class="content">

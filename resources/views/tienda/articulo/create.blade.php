@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.general')
 @section('contenido')
 
 <script src="{{ asset('js/crearArticulo.js') }}"></script>

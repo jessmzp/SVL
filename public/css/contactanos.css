@@ -1,0 +1,40 @@
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+    margin-left: -15%;
+    position: absolute;
+
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+    align-items: center;
+    position: absolute;
+}
+
+#formulario{
+    position: relative;
+    margin-top: 8%;
+}
+
+input{
+    display: block;
+    align-items: center;
+    margin-top: -3.5%;
+    margin-left: 10%;
+    position: relative;
+}
+
+textarea{
+    display: block;
+    align-items: center;
+    margin-top: -3.5%;
+    margin-left: 10%;
+    position: relative;
+}
+
+button{
+    margin-left: 36%;
+}

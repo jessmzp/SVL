@@ -50,14 +50,15 @@ Route::get('payment/status',array(
 
 
 Route::resource('tienda/departamento','DepartamentoController');
+Route::resource('tienda/departamento/categoria','DepartamentoCategoria');
+Route::resource('tienda/departamento/categoria/subcategoria','CategoriaSubCategoria');
+Route::resource('tienda/departamento/categoria/subcategoria/articulo','SubCategoriaArticulo');
 Route::resource('tienda/categoria','CategoriaController');
 Route::resource('tienda/subcategoria','SubcategoriaController');
 Route::resource('tienda/articulo','ArticuloController');
 Route::resource('usuario/articuloU','ArticuloUController');
 Route::resource('usuario/articulos','ArticulosController');
-
-
-
+Route::get('usuario/contactanos','ContactanosController@index');
 /*function index(){
     $departamento = Departamento::all();
     $articulo   = Articulo::all();
