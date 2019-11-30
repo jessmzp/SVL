@@ -23,21 +23,26 @@ class SubcategoriaController extends Controller
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('admin');
+        // $request->user()->authorizeRoles('admin');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
+        $query=trim($request->get('searchText'));
+        $subcategorias=DB::table('subcategoria as scat')
+        ->join ('categoria as cat','scat.idcategoria','=','cat.idcategoria')
+        ->select('scat.idsubcategoria','scat.nomsubcategoria','scat.descrisubcategoria','scat.estado','cat.nomcategoria as categoria')
+        ->where('scat.nomsubcategoria','LIKE','%'.$query.'%')
+        ->where('scat.estado','=','1')
+        ->orderBy('scat.idsubcategoria','desc')
+        ->paginate(7);
+        if($isAdmin)
         {
             //Si existe request obtengo todos los registros de la tabla Subcategoria de la BD
             //me determina el texto de busqueda para filtrar todas las Subcategorias
-            $query=trim($request->get('searchText'));
-            $subcategorias=DB::table('subcategoria as scat')
-            ->join ('categoria as cat','scat.idcategoria','=','cat.idcategoria')
-            ->select('scat.idsubcategoria','scat.nomsubcategoria','scat.descrisubcategoria','scat.estado','cat.nomcategoria as categoria')
-            ->where('scat.nomsubcategoria','LIKE','%'.$query.'%')
-            ->where('scat.estado','=','1')
-            ->orderBy('scat.idsubcategoria','desc')
-            ->paginate(7);
             return view('tienda.subcategoria.index',["subcategorias"=>$subcategorias,"searchText"=>$query]);
+        }
+        else
+        {
+            return view('usuario.subcategoria',["subcategorias"=>$subcategorias,"searchText"=>$query]);
         }
     }
 

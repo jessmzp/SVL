@@ -22,34 +22,39 @@ class ArticuloController extends Controller
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('admin');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
+        //Si existe request obtengo todos los registros de la tabla categoria de la BD
+        //me determina el texto de busqueda para filtrar todas las categorias
+        $query=trim($request->get('searchText'));
+        $articulos=DB::table('articulo as art')
+        ->join ('departamento as dep','art.iddepto','=','dep.iddepto')
+        ->join ('categoria as cat','art.idcategoria','=','cat.idcategoria')
+        ->join ('subcategoria as scat','art.idsubcategoria','=','scat.idsubcategoria')
+        ->select('art.idarticulo','art.nomarticulo','art.descriparticulo','art.precioarticulo','art.stockarticulo',
+            'art.imagenarticulo','art.detallearticulo','art.estado','scat.nomsubcategoria as subcategoria',
+            'cat.nomcategoria as categoria','dep.nomdepto as departamento','dep.iddepto','cat.idcategoria',
+            'scat.idsubcategoria')
+        ->where('art.nomarticulo','LIKE','%'.$query.'%')
+        ->where('art.estado','=','Disponible')
+        ->where('dep.estado','=','1')
+        ->where('cat.estado','=','1')
+        ->where('scat.estado','=','1')
+        ->orderBy('art.idarticulo','desc')
+        ->paginate(7);
+        if($isAdmin)
         {
-            //Si existe request obtengo todos los registros de la tabla categoria de la BD
-            //me determina el texto de busqueda para filtrar todas las categorias
-            $query=trim($request->get('searchText'));
-            $articulos=DB::table('articulo as art')
-            ->join ('departamento as dep','art.iddepto','=','dep.iddepto')
-            ->join ('categoria as cat','art.idcategoria','=','cat.idcategoria')
-            ->join ('subcategoria as scat','art.idsubcategoria','=','scat.idsubcategoria')
-            ->select('art.idarticulo','art.nomarticulo','art.descriparticulo','art.precioarticulo','art.stockarticulo',
-                'art.imagenarticulo','art.detallearticulo','art.estado','scat.nomsubcategoria as subcategoria',
-                'cat.nomcategoria as categoria','dep.nomdepto as departamento','dep.iddepto','cat.idcategoria',
-                'scat.idsubcategoria')
-            ->where('art.nomarticulo','LIKE','%'.$query.'%')
-            ->where('art.estado','=','Disponible')
-            ->where('dep.estado','=','1')
-            ->where('cat.estado','=','1')
-            ->where('scat.estado','=','1')
-            ->orderBy('art.idarticulo','desc')
-            ->paginate(7);
             return view('tienda.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
+        }
+        else
+        {
+            return view('usuario.articuloU',["articulos"=>$articulos,"searchText"=>$query]);
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
         $categorias=DB::table('categoria as cat')->where('cat.estado','=','1')->get();
         $subcategorias=DB::table('subcategoria as scat')->where('scat.estado','=','1')->get();
@@ -87,8 +92,9 @@ class ArticuloController extends Controller
         return view("tienda.articulo.show",["articulo"=>Articulo::findOrFail($id)]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         //Editar a un articulo en especifico
         $articulo=Articulo::findOrFail($id);
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
@@ -120,11 +126,25 @@ class ArticuloController extends Controller
         return Redirect::to('tienda/articulo');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $articulo=Articulo::findOrFail($id);
         $articulo->estado='Agotado';
         $articulo->update();
         return Redirect::to('tienda/articulo');
     }
+    /*
+    public function getCategoria(Request $request){
+        
+        if($request->ajax()){
+            $categorias = Categoria :: where('iddepto', $request->departamento_id)->get();
+            foreach($categoria as $cat){ 
+                $categoriasArray[$cat->idcategoria] = $cat->nomcategoria;
+            }
+
+            return response()-> json($categoriasArray);
+        }
+    }
+    */
 }

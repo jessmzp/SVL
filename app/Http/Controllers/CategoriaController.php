@@ -20,29 +20,35 @@ class CategoriaController extends Controller
         $this->middleware('auth');
 
     }
+    
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('admin');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
+        $query=trim($request->get('searchText'));
+        $categorias=DB::table('categoria as cat')
+        ->join ('departamento as dep','cat.iddepto','=','dep.iddepto')
+        ->select('cat.idcategoria','cat.nomcategoria','cat.descricategoria','cat.estado','dep.nomdepto as departamento')
+        ->where('cat.nomcategoria','LIKE','%'.$query.'%')
+        ->where('cat.estado','=','1')
+        ->orderBy('cat.idcategoria','desc')
+        ->paginate(7);
+        if($isAdmin)
         {
             //Si existe request obtengo todos los registros de la tabla categoria de la BD
             //me determina el texto de busqueda para filtrar todas las categorias
-            $query=trim($request->get('searchText'));
-            $categorias=DB::table('categoria as cat')
-            ->join ('departamento as dep','cat.iddepto','=','dep.iddepto')
-            ->select('cat.idcategoria','cat.nomcategoria','cat.descricategoria','cat.estado','dep.nomdepto as departamento')
-            ->where('cat.nomcategoria','LIKE','%'.$query.'%')
-            ->where('cat.estado','=','1')
-            ->orderBy('cat.idcategoria','desc')
-            ->paginate(7);
             return view('tienda.categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
+        }
+        else
+        {
+            return view('usuario.categoria',["categorias"=>$categorias,"searchText"=>$query]); 
         }
     }
 
-    public function create()
+    public function create(Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
         return view("tienda.categoria.create",["departamentos"=>$departamentos]);
     }
@@ -66,8 +72,9 @@ class CategoriaController extends Controller
         return view("tienda.categoria.show",["categoria"=>categoria::findOrFail($id)]);
     }
 
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $categoria=Categoria::findOrFail($id);
         $departamentos=DB::table('departamento as dep')->where('dep.estado','=','1')->get();
         return view("tienda.categoria.edit",["categoria"=>$categoria,"departamentos"=>$departamentos]);
@@ -84,8 +91,9 @@ class CategoriaController extends Controller
         return Redirect::to('tienda/categoria');
     }
 
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
+        $request->user()->authorizeRoles('admin');
         $categoria=categoria::findOrFail($id);
         $categoria->estado='0';
         $categoria->update();
