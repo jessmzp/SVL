@@ -45,13 +45,18 @@ class CarritoController extends Controller
     }
 
     //Actualizar articulo
-    public function update(Articulo $articulo,$cantidad)
+    public function update(Request $request)
     {
+        $idArticulo = $_POST["idArt"];
+        $cantidad = $_POST["cantidad"];
+        $detalleAr = $_POST["detalle"];
+
 
         $carrito=\Session::get('carrito');
-        $carrito[$articulo->detallearticulo]->cantidad=$cantidad;
+        $carrito[$detalleAr]->cantidad=$cantidad;
         \Session::put('carrito',$carrito);
-        return redirect()->route('carrito-mostrar');
+        $total=$this->total();
+        return $total;
     }
 
     //Vaciar carrito
@@ -72,27 +77,16 @@ class CarritoController extends Controller
         return $total;
     }
 
-   // public function detalleOrden()
-   // {
-   //     if(count(\Session::get('carrito'))<=0) return redirect()->route('home');
-   //     $carrito=\Session::get('carrito');
-   //     $total=$this->total();
-  //     return view('tienda.detalle-orden',["carrito"=>$carrito,"total"=>$total]);
-  //  }
+
 
   public function detalleOrden()
   {
-    
-   // $obj = json_decode($_POST["myData"]);
-  // foreach  ($obj as $item){
-   // var_dump ($item);
-   //}
 
       if(count(\Session::get('carrito'))<=0) return redirect()->route('home');
       $carrito=\Session::get('carrito');
       $total=$this->total();
       return view('tienda.detalle-orden',["carrito"=>$carrito,"total"=>$total]);
-    //  return response()->json($obj);
+
    }
 
 

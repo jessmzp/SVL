@@ -69,7 +69,8 @@
         </table><hr>
         <h3>
             <span class="label label-success"> 
-            Total: $ <label id="totalPagarFinal"></label>
+           Total: $ <label id="totalPagarFinal"></label>
+<input type="hidden" id="TotJes" value="{{$total}}"/>
             </span>
         </h3>
 

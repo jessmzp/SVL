@@ -4,7 +4,12 @@
     var arrayObj = []; // se declara en este ambito para que no pierda su valor mientras la funcion se invoca
     var total = 0;
     document.getElementById('totalPagarFinal').innerHTML =  total.toFixed(2).toString();
-    
+    var totJe = $("#TotJes").val();
+
+    if(totJe !== 0){
+        document.getElementById('totalPagarFinal').innerHTML = totJe;
+    }
+
     // Actualizando
     $(".btn-update-item").on('click', function(e){
         e.preventDefault();
@@ -12,6 +17,7 @@
         var id = $(this).data('id');
         var articulo = $(this).data('articulo'); //obteniendo el objeto articulo
         articulo.cantidad = $("#articulo_" + id).val(); //seteando la cantidad en el objeto
+        var detalleArt = articulo.detallearticulo;
         var href = $(this).data('href');
         var precioArt = $(this).data('precio');
         var cantidad = $("#articulo_" + id).val();
@@ -36,7 +42,16 @@
        }
        document.getElementById('totalPagarFinal').innerHTML = total.toFixed(2).toString(); //setea valor
 
-       document.getElementById("valObj").value = JSON.stringify(arrayObj);
+
+        $.ajax({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            url: "/carrito/actualizar",
+            data: {idArt: id, cantidad:cantidad, detalle: detalleArt},
+            type: 'POST',
+            success: function(response) {
+                document.getElementById('totalPagarFinal').innerHTML = response;
+            }
+        });
 
        
     });

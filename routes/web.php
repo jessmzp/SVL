@@ -26,9 +26,9 @@ Route::get('carrito/mostrar','CarritoController@show')->name('carrito-mostrar');
 Route::get('carrito/agregar/{articulo}','CarritoController@add')->name('carrito-añadir');
 Route::get('carrito/eliminar/{articulo}','CarritoController@delete')->name('carrito-eliminar');
 Route::get('carrito/vaciar','CarritoController@trash')->name('carrito-vaciar');
-Route::get('carrito/actualizar/{articulo}/{cantidad}','CarritoController@update')->name('carrito-actualizar');
+//Route::get('carrito/actualizar/{articulo}/{cantidad}','CarritoController@update')->name('carrito-actualizar');
 Route::get('detalle-orden','CarritoController@detalleOrden',['middleware'=>['auth']])->name('detalle-orden');
-//Route::post('detalle-orden', 'CarritoController@detalleOrden');
+Route::post('carrito/actualizar', 'CarritoController@update')->name('carrito-actualizar');
 
 /*Route::get('/', function(){  
     return 'Home';
