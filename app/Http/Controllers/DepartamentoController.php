@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 //Hago referencia al modelo departamento
 //use SistemaVentasLinea\Http\Request;
 use SistemaVentasLinea\Departamento;
+use SistemaVentasLinea\Categoria;
 //para hacer redireccion
 use Illuminate\Support\Facades\Redirect;
 use SistemaVentasLinea\Http\Requests\DepartamentoFormRequest;
@@ -60,9 +61,16 @@ class DepartamentoController extends Controller
         return Redirect::to('tienda/departamento');
     }
 
-    public function show($id)
+    //public function show($id)
+    //{
+      //  return view("tienda.departamento.show",["departamento"=>Departamento::findOrFail($id)]);
+    //}
+
+
+    public function show($id,Request $request)
     {
-        return view("tienda.departamento.show",["departamento"=>Departamento::findOrFail($id)]);
+        $request->user()->hasRole('user');
+        return view("usuario.categoria",["categorias"=>Categoria::where('iddepto',$id)->get()]);
     }
 
     public function edit($id, Request $request)

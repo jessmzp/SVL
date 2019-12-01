@@ -41,7 +41,7 @@
                     <a href="/usuario/subcategoria">Subcategoria</a>
                 </li>
                 <li>
-                    <a href="/usuario/articuloU">Articulo</a>
+                    <a href="/usuario/articulos">Articulo</a>
                 </li>
                 <li>
                     <a href="/usuario/contactanos">Contactanos</a>

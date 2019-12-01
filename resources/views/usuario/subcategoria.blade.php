@@ -13,7 +13,7 @@
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-condensed table-hover">
        <thead>
-        <th>Id</th>
+       <!-- <th>Id</th> -->
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Ver</th>
@@ -22,10 +22,10 @@
         @foreach($subcategorias as $scat)
         @include('tienda.subcategoria.modal')
         <tr>
-            <td>{{$scat->idsubcategoria}}</td>
+           <!-- <td>{{$scat->idsubcategoria}}</td>-->
             <td>{{$scat->nomsubcategoria}}</td>
             <td>{{$scat->descrisubcategoria}}</td>
-            <td><a href="{{URL::action('SubCategoriaArticulo@show',$scat->idsubcategoria)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
+            <td><a href="{{URL::action('SubcategoriaController@show',$scat->idsubcategoria)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
         </tr>
         @endforeach
     </table>

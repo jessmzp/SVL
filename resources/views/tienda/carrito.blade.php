@@ -45,8 +45,9 @@
                          <a
                             href="#"
                             class="btn btn-warning btn-update-item"
-                            data-href="{{route('carrito-actualizar',[$art->idarticulo,$art->cantidad])}}"
+                            data-href="{{route('carrito-actualizar',[$art,$art->cantidad])}}"
                             data-id="{{$art->idarticulo}}"
+                            data-articulo = "{{$art}}"
                             data-precio="{{$art->precioarticulo}}"
                              >
                             <i class="fas fa-sync"></i>

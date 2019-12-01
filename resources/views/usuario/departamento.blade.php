@@ -13,7 +13,7 @@
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-condensed table-hover">
        <thead>
-        <th>Id</th>
+        <!--<th>Id</th>-->
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Ver</th>
@@ -22,10 +22,10 @@
         @foreach($departamentos as $dep)
         @include('tienda.departamento.modal')
         <tr>
-            <td>{{$dep->iddepto}}</td>
+            <!--<td>{{$dep->iddepto}}</td>-->
             <td>{{$dep->nomdepto}}</td>
             <td>{{$dep->descridepto}}</td>
-            <td><a href="{{URL::action('DepartamentoCategoria@show',$dep->iddepto)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
+            <td><a href="{{URL::action('DepartamentoController@show',$dep->iddepto)}}" class="btn btn-outline-primary"><i class="fa fa-eye"></i></a></td>
         </tr>
         @endforeach
     </table>

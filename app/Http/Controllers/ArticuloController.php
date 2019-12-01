@@ -86,11 +86,18 @@ class ArticuloController extends Controller
         return Redirect::to('tienda/articulo');
     }
 
-    public function show($id)
-    {//Ver detalles del articulo
+    //public function show($id)
+    //{//Ver detalles del articulo
         //Boton para los detalles del articulo
-        return view("tienda.articulo.show",["articulo"=>Articulo::findOrFail($id)]);
-    }
+     //   return view("tienda.articulo.show",["articulo"=>Articulo::findOrFail($id)]);
+    //}
+    public function show(Request $request)
+   {
+       $id =$request->id;
+       $request->user()->hasRole('user');
+       // $request->user()->authorizeRoles('user');
+       return view("usuario.articulos",["articulos"=>Articulo::where('idsubcategoria',$id)->get()]);
+   }
 
     public function edit($id, Request $request)
     {

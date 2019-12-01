@@ -43,11 +43,11 @@ class DepartamentoCategoria extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,Request $request)
-    {
-        $request->user()->hasRole('user');
-        return view("usuario.categoria",["categorias"=>Categoria::where('iddepto',$id)->get()]);
-    }
+    //public function show($id,Request $request)
+    //{
+       // $request->user()->hasRole('user');
+        //return view("usuario.categoria",["categorias"=>Categoria::where('iddepto',$id)->get()]);
+    //}
 
     /**
      * Show the form for editing the specified resource.

@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 
 class SubCategoriaArticulo extends Controller
 {
-    public function show($id,Request $request)
-    {
-        $request->user()->hasRole('user');
+   // public function show(Request $request)
+    //{
+       // $id =$request->id;
+        //$request->user()->hasRole('user');
         // $request->user()->authorizeRoles('user');
-        return view("usuario.articuloU",["articulos"=>Articulo::where('idsubcategoria',$id)->get()]);
-    }
+       // return view("usuario.articuloU",["articulos"=>Articulo::where('idsubcategoria',$id)->get()]);
+    //}
 }

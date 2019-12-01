@@ -28,6 +28,8 @@ Route::get('carrito/eliminar/{articulo}','CarritoController@delete')->name('carr
 Route::get('carrito/vaciar','CarritoController@trash')->name('carrito-vaciar');
 Route::get('carrito/actualizar/{articulo}/{cantidad}','CarritoController@update')->name('carrito-actualizar');
 Route::get('detalle-orden','CarritoController@detalleOrden',['middleware'=>['auth']])->name('detalle-orden');
+//Route::post('detalle-orden', 'CarritoController@detalleOrden');
+
 /*Route::get('/', function(){  
     return 'Home';
 });  

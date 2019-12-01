@@ -45,7 +45,7 @@ class CarritoController extends Controller
     }
 
     //Actualizar articulo
-    public function update($articuloId,$cantidad)
+    public function update(Articulo $articulo,$cantidad)
     {
 
         $carrito=\Session::get('carrito');
@@ -72,12 +72,28 @@ class CarritoController extends Controller
         return $total;
     }
 
-    public function detalleOrden()
-    {
-        if(count(\Session::get('carrito'))<=0) return redirect()->route('home');
-        $carrito=\Session::get('carrito');
-        $total=$this->total();
-        return view('tienda.detalle-orden',["carrito"=>$carrito,"total"=>$total]);
-    }
+   // public function detalleOrden()
+   // {
+   //     if(count(\Session::get('carrito'))<=0) return redirect()->route('home');
+   //     $carrito=\Session::get('carrito');
+   //     $total=$this->total();
+  //     return view('tienda.detalle-orden',["carrito"=>$carrito,"total"=>$total]);
+  //  }
+
+  public function detalleOrden()
+  {
+    
+   // $obj = json_decode($_POST["myData"]);
+  // foreach  ($obj as $item){
+   // var_dump ($item);
+   //}
+
+      if(count(\Session::get('carrito'))<=0) return redirect()->route('home');
+      $carrito=\Session::get('carrito');
+      $total=$this->total();
+      return view('tienda.detalle-orden',["carrito"=>$carrito,"total"=>$total]);
+    //  return response()->json($obj);
+   }
+
 
 }

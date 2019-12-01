@@ -30,30 +30,38 @@ class ArticulosController extends Controller
     public function index(Request $request)
     {
         //permiso
-        $request->user()->authorizeRoles('user');
+        // $request->user()->authorizeRoles('user');
+        $isAdmin = $request->user()->hasRole('admin');
         //validamos:
-        if($request)
-        {
+        // if($request)
+        // {
             //Si existe request obtengo todos los registros de la tabla categoria de la BD
             //me determina el texto de busqueda para filtrar todas las categorias
-            $query=trim($request->get('searchText'));
-            $articulos=DB::table('articulo as art')
-            ->join ('departamento as dep','art.iddepto','=','dep.iddepto')
-            ->join ('categoria as cat','art.idcategoria','=','cat.idcategoria')
-            ->join ('subcategoria as scat','art.idsubcategoria','=','scat.idsubcategoria')
-            ->select('art.idarticulo','art.nomarticulo','art.descriparticulo','art.precioarticulo','art.stockarticulo',
-                'art.imagenarticulo','art.detallearticulo','art.estado','scat.nomsubcategoria as subcategoria',
-                'cat.nomcategoria as categoria','dep.nomdepto as departamento','dep.iddepto','cat.idcategoria',
-                'scat.idsubcategoria')
-            ->where('art.nomarticulo','LIKE','%'.$query.'%')
-            ->where('art.estado','=','Disponible')
-            ->where('dep.estado','=','1')
-            ->where('cat.estado','=','1')
-            ->where('scat.estado','=','1')
-            ->orderBy('art.idarticulo','desc')
-            ->paginate(7);
+        $query=trim($request->get('searchText'));
+        $articulos=DB::table('articulo as art')
+        ->join ('departamento as dep','art.iddepto','=','dep.iddepto')
+        ->join ('categoria as cat','art.idcategoria','=','cat.idcategoria')
+        ->join ('subcategoria as scat','art.idsubcategoria','=','scat.idsubcategoria')
+        ->select('art.idarticulo','art.nomarticulo','art.descriparticulo','art.precioarticulo','art.stockarticulo',
+            'art.imagenarticulo','art.detallearticulo','art.estado','scat.nomsubcategoria as subcategoria',
+            'cat.nomcategoria as categoria','dep.nomdepto as departamento','dep.iddepto','cat.idcategoria',
+            'scat.idsubcategoria')
+        ->where('art.nomarticulo','LIKE','%'.$query.'%')
+        ->where('art.estado','=','Disponible')
+        ->where('dep.estado','=','1')
+        ->where('cat.estado','=','1')
+        ->where('scat.estado','=','1')
+        ->orderBy('art.idarticulo','desc')
+        ->paginate(7);
+        if($isAdmin)
+        {
+            return view('tienda.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
+        }
+        else
+        {
             return view('usuario.articulos',["articulos"=>$articulos,"searchText"=>$query]);
         }
+        // }
     }
     public function show($detallearticulo)
     {

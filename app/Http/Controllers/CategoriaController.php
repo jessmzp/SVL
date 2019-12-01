@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //Hago referencia al modelo categoria
 //use SistemaVentasLinea\Http\Request;
 use SistemaVentasLinea\Categoria;
+use SistemaVentasLinea\SubCategoria;
 //para hacer redireccion
 use Illuminate\Support\Facades\Redirect;
 use SistemaVentasLinea\Http\Requests\CategoriaFormRequest;
@@ -25,8 +26,9 @@ class CategoriaController extends Controller
     {
         //permiso
         $isAdmin = $request->user()->hasRole('admin');
+        $isUser = $request-> user()->hasRole('user');  
         //validamos:
-        $query=trim($request->get('searchText'));
+         $query=trim($request->get('searchText'));
         $categorias=DB::table('categoria as cat')
         ->join ('departamento as dep','cat.iddepto','=','dep.iddepto')
         ->select('cat.idcategoria','cat.nomcategoria','cat.descricategoria','cat.estado','dep.nomdepto as departamento')
@@ -44,6 +46,8 @@ class CategoriaController extends Controller
         {
             return view('usuario.categoria',["categorias"=>$categorias,"searchText"=>$query]); 
         }
+
+        
     }
 
     public function create(Request $request)
@@ -67,11 +71,16 @@ class CategoriaController extends Controller
         return Redirect::to('tienda/categoria');
     }
 
-    public function show($id)
+   // public function show($id)
+    //{
+      //  return view("tienda.categoria.show",["categoria"=>categoria::findOrFail($id)]);
+    //}
+    public function show($id,Request $request)
     {
-        return view("tienda.categoria.show",["categoria"=>categoria::findOrFail($id)]);
+        $request->user()->hasRole('user');
+        // $request->user()->authorizeRoles('user');
+        return view("usuario.subcategoria",["subcategorias"=>Subcategoria::where('idcategoria',$id)->get()]);
     }
-
     public function edit($id, Request $request)
     {
         $request->user()->authorizeRoles('admin');

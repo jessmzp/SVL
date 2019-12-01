@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 //Hago referencia al modelo Subcategoria
 //use SistemaVentasLinea\Http\Request;
 use SistemaVentasLinea\Subcategoria;
+use SistemaVentasLinea\Articulo;
 //para hacer redireccion
 use Illuminate\Support\Facades\Redirect;
 use SistemaVentasLinea\Http\Requests\SubcategoriaFormRequest;
@@ -66,10 +67,17 @@ class SubcategoriaController extends Controller
         return Redirect::to('tienda/subcategoria');
     }
 
-    public function show($id)
-    {
-        return view("tienda.subcategoria.show",["subcategoria"=>subcategoria::findOrFail($id)]);
-    }
+   // public function show($id)
+    //{
+      //  return view("tienda.subcategoria.show",["subcategoria"=>subcategoria::findOrFail($id)]);
+   // }
+   public function show($id, Request $request)
+   {
+    //    $id =$request->id;
+       $request->user()->hasRole('user');
+       // $request->user()->authorizeRoles('user');
+       return view("usuario.articulos",["articulos"=>Articulo::where('idsubcategoria',$id)->get()]);
+   }
 
     public function edit($id)
     {
