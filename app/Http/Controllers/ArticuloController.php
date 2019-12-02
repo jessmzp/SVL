@@ -96,7 +96,7 @@ class ArticuloController extends Controller
        $id =$request->id;
        $request->user()->hasRole('user');
        // $request->user()->authorizeRoles('user');
-       return view("usuario.articulos",["articulos"=>Articulo::where('idsubcategoria',$id)->get()]);
+       return view("tienda.articulo",["articulos"=>Articulo::where('idsubcategoria',$id)->get()]);
    }
 
     public function edit($id, Request $request)
