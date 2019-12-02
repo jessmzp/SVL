@@ -48,7 +48,7 @@ class ArticuloController extends Controller
         }
         else
         {
-            return view('usuario.articuloU',["articulos"=>$articulos,"searchText"=>$query]);
+            return view('tienda.articulo',["articulos"=>$articulos,"searchText"=>$query]);
         }
     }
 
